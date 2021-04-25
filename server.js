@@ -6,6 +6,7 @@ const path = require("path");
 
 const PORT = process.env.PORT || 3300;
 
+//assets
 app.use(express.static("public"));
 
 //set template emgine
