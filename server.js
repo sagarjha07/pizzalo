@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("express-flash");
 const MongoDbStore = require("connect-mongo")(session);
+const passport = require("passport");
 
 //mongoDB connection
 const url = "mongodb://localhost/pizzalo";
@@ -27,6 +28,8 @@ connection
 		console.log("connection failed....");
 	});
 
+
+
 //session store
 let mongoStore = new MongoDbStore({
 	mongooseConnection: connection,
@@ -44,17 +47,25 @@ app.use(
 	})
 );
 
+//passport config
+const passportInit = require("./app/config/passport");
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 
 //assets
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //global middlewares
-app.use((req,res,next)=>{
-	res.locals.session=req.session;
+app.use((req, res, next) => {
+	res.locals.session = req.session;
+	res.locals.user=req.user;
 	next();
-})
+});
 
 //set template emgine
 app.use(expressLayout);
