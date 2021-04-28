@@ -1855,14 +1855,14 @@ function updateCart(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post("/update-cart", pizza).then(function (res) {
     cartCounter.innerText = res.data.totalQty;
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
-      type: 'success',
+      type: "success",
       timeout: 1000,
       text: "Item added to cart",
       progressBar: false
     }).show();
   })["catch"](function (err) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
-      type: 'error',
+      type: "error",
       timeout: 700,
       text: "Something went Wrong",
       progressBar: false
@@ -1876,6 +1876,13 @@ addTocart.forEach(function (btn) {
     updateCart(pizza);
   });
 });
+var alertMsg = document.querySelector("#success-alert");
+
+if (alertMsg) {
+  setTimeout(function () {
+    alertMsg.remove();
+  }, 2000);
+}
 
 /***/ }),
 
