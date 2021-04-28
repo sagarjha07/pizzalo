@@ -1,5 +1,6 @@
 import axios from "axios";
 import Noty from "noty";
+import initAdmin from "./admin";
 
 let addTocart = document.querySelectorAll(".add-to-cart");
 let cartCounter = document.getElementById("cart-counter");
@@ -39,3 +40,8 @@ if (alertMsg) {
 		alertMsg.remove();
 	}, 2000);
 }
+
+
+//
+
+initAdmin();
