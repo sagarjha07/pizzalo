@@ -21,15 +21,16 @@ function initRoutes(app) {
 	app.get("/cart", cartController().index);
 	app.post("/update-cart", cartController().update);
 
-	//customers  routes
-	app.post("/orders", orderController().store);
-	app.get("/customer/orders", auth, orderController().index);
-	app.get("/customer/orders/:id", auth, orderController().show);
-
 	//admin routes
 	app.get("/admin/orders", admin, adminOrderController().index);
 	// admin/order/status
 	app.post("/admin/order/status", admin, statusController().update);
+
+	//customers  routes
+	app.post("/orders", orderController().store);
+	app.get("/customer/orders/:id", auth, orderController().show);
+	app.get("/customer/orders", auth, orderController().index);
+	
 }
 
 module.exports = initRoutes;
