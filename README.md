@@ -1,2 +1,2 @@
 # Pizzalo
-## A Realtime pizza order tracker app using NodeJs, Express and MongoDB.
+### A Realtime pizza order tracker app using NodeJs, Express and MongoDB.
